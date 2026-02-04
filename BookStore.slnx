@@ -1,0 +1,35 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BookStore.Application.Contracts/BookStore.Application.Contracts.csproj" />
+    <Project Path="src/BookStore.Application/BookStore.Application.csproj" />
+    <Project Path="src/BookStore.AuthServer/BookStore.AuthServer.csproj" />
+    <Project Path="src/BookStore.Blazor.Client/BookStore.Blazor.Client.csproj" />
+    <Project Path="src/BookStore.Blazor.Server.Tiered/BookStore.Blazor.Server.Tiered.csproj" />
+    <Project Path="src/BookStore.Blazor.Server/BookStore.Blazor.Server.csproj" />
+    <Project Path="src/BookStore.Blazor.WebApp.Client/BookStore.Blazor.WebApp.Client.csproj" />
+    <Project Path="src/BookStore.Blazor.WebApp.Tiered.Client/BookStore.Blazor.WebApp.Tiered.Client.csproj" />
+    <Project Path="src/BookStore.Blazor.WebApp.Tiered/BookStore.Blazor.WebApp.Tiered.csproj" />
+    <Project Path="src/BookStore.Blazor.WebApp/BookStore.Blazor.WebApp.csproj" />
+    <Project Path="src/BookStore.Blazor/BookStore.Blazor.csproj" />
+    <Project Path="src/BookStore.DbMigrator/BookStore.DbMigrator.csproj" />
+    <Project Path="src/BookStore.Domain.Shared/BookStore.Domain.Shared.csproj" />
+    <Project Path="src/BookStore.Domain/BookStore.Domain.csproj" />
+    <Project Path="src/BookStore.EntityFrameworkCore/BookStore.EntityFrameworkCore.csproj" />
+    <Project Path="src/BookStore.HttpApi.Client/BookStore.HttpApi.Client.csproj" />
+    <Project Path="src/BookStore.HttpApi.Host/BookStore.HttpApi.Host.csproj" />
+    <Project Path="src/BookStore.HttpApi.HostWithIds/BookStore.HttpApi.HostWithIds.csproj" />
+    <Project Path="src/BookStore.HttpApi/BookStore.HttpApi.csproj" />
+    <Project Path="src/BookStore.MongoDB/BookStore.MongoDB.csproj" />
+    <Project Path="src/BookStore.Web.Host/BookStore.Web.Host.csproj" />
+    <Project Path="src/BookStore.Web/BookStore.Web.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/BookStore.Application.Tests/BookStore.Application.Tests.csproj" />
+    <Project Path="test/BookStore.Domain.Tests/BookStore.Domain.Tests.csproj" />
+    <Project Path="test/BookStore.EntityFrameworkCore.Tests/BookStore.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="test/BookStore.HttpApi.Client.ConsoleTestApp/BookStore.HttpApi.Client.ConsoleTestApp.csproj" />
+    <Project Path="test/BookStore.MongoDB.Tests/BookStore.MongoDB.Tests.csproj" />
+    <Project Path="test/BookStore.TestBase/BookStore.TestBase.csproj" />
+    <Project Path="test/BookStore.Web.Tests/BookStore.Web.Tests.csproj" />
+  </Folder>
+</Solution>
