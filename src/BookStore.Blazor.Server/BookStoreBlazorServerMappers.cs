@@ -3,7 +3,7 @@ using BookStore.Authors;
 using Riok.Mapperly.Abstractions;
 using Volo.Abp.Mapperly;
 
-namespace BookStore.Blazor.Client;
+namespace BookStore.Blazor.Server;
 
 [Mapper]
 public partial class BookDtoToCreateUpdateBookDtoMapper : MapperBase<BookDto, CreateUpdateBookDto>

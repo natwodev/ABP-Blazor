@@ -222,6 +222,7 @@ public class BookStoreBlazorModule : AbpModule
         Configure<AbpRouterOptions>(options =>
         {
             options.AppAssembly = typeof(BookStoreBlazorModule).Assembly;
+            options.AdditionalAssemblies.Add(typeof(BookStore.Blazor.Client.BookStoreBlazorClientModule).Assembly);
         });
     }
 
