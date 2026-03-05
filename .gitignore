@@ -299,3 +299,7 @@ src/BookStore.Blazor.WebApp/Logs/*
 
 # ABP CLI
 abp-generate-proxy.json
+
+
+readme_quy_tắc_commit_code.md
+promt.md
