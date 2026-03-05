@@ -303,3 +303,5 @@ abp-generate-proxy.json
 
 readme_quy_tắc_commit_code.md
 promt.md
+
+src/BookStore.EntityFrameworkCore/Migrations
