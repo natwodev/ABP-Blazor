@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Account;
+using System;
+using Volo.Abp.Account;
 using Volo.Abp.Mapperly;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -25,5 +26,9 @@ public class BookStoreApplicationModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services.AddMapperlyObjectMapper<BookStoreApplicationModule>();
+        context.Services.AddHttpClient("TracNghiemApi", client =>
+        {
+            client.BaseAddress = new Uri("http://api.tracnghiem.online/");
+        });
     }
 }

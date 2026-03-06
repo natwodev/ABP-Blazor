@@ -1,0 +1,107 @@
+@page "/students"
+@using BookStore.Nwind
+@inject NwindDataService NwindDataService
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between align-items-center">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h3>Students (Blazorise Search Demo)</h3>
+            </Column>
+            <Column ColumnSize="ColumnSize.Is6">
+                <TextEdit @bind-Text="Text"
+                          Placeholder="Nhập từ khóa tìm kiếm...">
+                </TextEdit>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto" Class="text-end">
+                <Button Color="Color.Primary"
+                        Clicked="OnSearchButtonClick">
+                    Search
+                </Button>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="Product"
+                  Data="FilteredProducts"
+                  ShowPager="false">
+            <DataGridColumns>
+                <DataGridColumn TItem="Product"
+                                Field="@nameof(Product.ProductName)"
+                                Caption="Product" />
+                <DataGridColumn TItem="Product"
+                                Field="@nameof(Product.Country)"
+                                Caption="Country" />
+                <DataGridColumn TItem="Product"
+                                Field="@nameof(Product.City)"
+                                Caption="City" />
+                <DataGridColumn TItem="Product"
+                                Field="@nameof(Product.Address)"
+                                Caption="Address" />
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+@code {
+    IEnumerable<Product> Products { get; set; } = Enumerable.Empty<Product>();
+    string Text { get; set; } = string.Empty;
+    string SearchText { get; set; } = string.Empty;
+
+    IEnumerable<Product> FilteredProducts =>
+        string.IsNullOrWhiteSpace(SearchText)
+            ? Products
+            : Products.Where(p =>
+                (p.ProductName?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (p.Country?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (p.City?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (p.Address?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ?? false));
+
+    protected override async Task OnInitializedAsync()
+    {
+        var invoices = await NwindDataService.GetInvoicesAsync();
+        var products = await NwindDataService.GetProductsAsync();
+
+        Products = invoices.Join(
+                products,
+                i => i.ProductId,
+                p => p.ProductId,
+                (i, p) => new Product
+                {
+                    ProductName = i.ProductName,
+                    Country = i.Country,
+                    City = i.City,
+                    Address = i.Address
+                })
+            .Distinct()
+            .ToList();
+    }
+
+    void OnSearchButtonClick()
+    {
+        SearchText = Text;
+    }
+
+    public class Product
+    {
+        public string ProductName { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Address { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Product product &&
+                   string.Equals(product.ProductName, ProductName) &&
+                   string.Equals(product.Country, Country) &&
+                   string.Equals(product.City, City) &&
+                   string.Equals(product.Address, Address);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(ProductName, Country, City, Address);
+        }
+    }
+}
+

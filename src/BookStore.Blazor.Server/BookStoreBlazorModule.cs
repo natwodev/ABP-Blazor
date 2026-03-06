@@ -15,6 +15,7 @@ using BookStore.Blazor.Server.Menus;
 using BookStore.EntityFrameworkCore;
 using BookStore.Localization;
 using BookStore.MultiTenancy;
+using BookStore.Nwind;
 using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
@@ -117,6 +118,8 @@ public class BookStoreBlazorModule : AbpModule
         // Add services to the container.
         context.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
+
+        context.Services.AddSingleton<NwindDataService>();
 
         ConfigureAuthentication(context);
         ConfigureUrls(configuration);

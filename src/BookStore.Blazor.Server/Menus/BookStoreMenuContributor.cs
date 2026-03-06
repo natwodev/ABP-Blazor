@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using BookStore.Localization;
 using BookStore.MultiTenancy;
 using BookStore.Permissions;
@@ -56,6 +56,13 @@ public class BookStoreMenuContributor : IMenuContributor
 
         context.Menu.AddItem(bookStoreMenu);
 
+        context.Menu.AddItem(new ApplicationMenuItem(
+            "BookStore.Students",
+            l["Menu:Students"],
+            url: "/students",
+            icon: "fa fa-users"
+        ));
+
         bookStoreMenu.AddItem(new ApplicationMenuItem(
             "BooksStore.Books",
             l["Menu:Books"],
@@ -67,7 +74,7 @@ public class BookStoreMenuContributor : IMenuContributor
             l["Menu:Authors"],
             url: "/authors"
         ).RequirePermissions(BookStorePermissions.Authors.Default));
-
+         
         return Task.CompletedTask;
     }
 }
